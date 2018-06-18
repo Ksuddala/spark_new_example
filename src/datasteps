@@ -1,0 +1,31 @@
+pacckage spark
+
+import org.apache.spark.sql.DataFrame
+
+
+object dataSteps {
+
+  def writedataFrameToActivatedZone(dataFrame: DataFrame,
+                                    outputLocation: String,
+                                    outputFormat: String = "parquet",
+                                    saveMode: String = "append",
+                                    partitionColumn: Option[String]): Unit = {
+
+    if(partitionColumn.isDefined) {
+      dataFrame.write
+        .format(outputFormat)
+        .mode(saveMode)
+        .partitionBy(partitionColumn.get)
+        .save(outputFormat)
+    } else {
+      dataFrame.write
+        .format(outputFormat)
+        .mode(saveMode)
+        .save(outputFormat)
+    }
+
+
+  }
+
+}
+

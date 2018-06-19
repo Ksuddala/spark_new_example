@@ -1,11 +1,11 @@
-pacckage spark
+package spark
 
 import org.apache.spark.sql.DataFrame
 
 
-object dataSteps {
+object DataSteps {
 
-  def writedataFrameToActivatedZone(dataFrame: DataFrame,
+  def writeDataFrameToActivatedZone(dataframe:Dataframe,
                                     outputLocation: String,
                                     outputFormat: String = "parquet",
                                     saveMode: String = "append",
